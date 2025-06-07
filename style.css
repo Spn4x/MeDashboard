@@ -264,3 +264,83 @@ footer {
         font-size: 2.2em;
     }
 }
+
+/* =================================================================== */
+/* --- MINIMAL MOBILE VIEW --- */
+/* These styles apply to screens 768px wide or smaller (tablets/phones) */
+/* =================================================================== */
+@media (max-width: 768px) {
+    /* 1. Performance & Cleanliness: Disable heavy animations */
+    #particles-js {
+        display: none; /* Turn off particles completely */
+    }
+    footer {
+        display: none; /* Hide footer to save space */
+    }
+
+    /* 2. Layout: Merge panels into one seamless block */
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Stack into a single column */
+        gap: 0; /* Remove the gap between panels */
+    }
+
+    .main-content {
+        text-align: center;
+        border-bottom: 1px solid var(--border-color); /* Add a separator line */
+        /* Round the top corners, but not the bottom, to merge with the panel below */
+        border-radius: var(--key-border-radius) var(--key-border-radius) 0 0;
+    }
+
+    .quick-links {
+        border-top: none; /* Remove the top border to merge seamlessly */
+        /* Round the bottom corners, but not the top */
+        border-radius: 0 0 var(--key-border-radius) var(--key-border-radius);
+    }
+
+    /* 3. Simplify Interactions: Ditch the 3D key effect for a flat UI */
+    #search-form,
+    .link-item {
+        box-shadow: none; /* Remove the 3D bottom shadow */
+    }
+
+    #search-form {
+        background-color: var(--bg-color); /* Make it match the panel base */
+    }
+
+    #search-form:focus-within {
+        transform: none; /* Disable the 'press down' motion */
+        box-shadow: 0 0 0 3px var(--accent-glow); /* Keep the focus glow */
+    }
+
+    .link-item:hover,
+    .link-item:active {
+        transform: none; /* Disable the 'press down' motion */
+        background-color: var(
+            --panel-color
+        ); /* Use a simple background highlight instead */
+    }
+
+    /* 4. Optimize Content Layout */
+    header h1 {
+        font-size: 2.8em;
+    }
+
+    .links-grid {
+        /* Show 3 links per row for a more compact grid */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* A second breakpoint for very small phones */
+@media (max-width: 480px) {
+    .content-panel {
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 2.2em;
+    }
+    /* On the smallest screens, 2 links per row is more comfortable */
+    .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
