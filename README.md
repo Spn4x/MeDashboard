@@ -70,4 +70,3 @@ particlesJS("particles-js", {
 -   Vanilla JavaScript
 -   [particles.js](https://github.com/VincentGarreau/particles.js/)
 -   [Font Awesome](https://fontawesome.com/)
-```
