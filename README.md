@@ -1,6 +1,10 @@
+
 # MeBoard - My Personal Interactive Startpage
 
 A sleek, modern, and highly interactive startpage to replace the browser's new tab page.
+
+![MeBoard Screenshot](./screenshot.png)
+*(To create this screenshot, I just took a picture of my startpage and saved it as `screenshot.png` in this folder.)*
 
 ---
 
@@ -34,3 +38,36 @@ Open `index.html` and find the `div` with the class `links-grid`. You can change
     <i class="fa-brands fa-reddit-alien"></i> <!-- Change icon class here -->
     <span>Reddit</span> <!-- Change display name here -->
 </a>
+```
+
+#### 2. Change Theme Colors
+Open `style.css` and edit the variables inside the `:root` block at the top. This is the easiest way to change the entire color scheme.
+
+```css
+:root {
+    --bg-color: #0d1117;
+    --panel-color: #161b22;
+    --accent-color: #58a6ff; /* This is the main highlight color */
+}
+```
+
+#### 3. Tweak the Particles
+Open `script.js` and find the `particlesJS` configuration. You can change the particle `color`, `number`, `speed`, and more. The script already reduces the particle count for mobile performance.
+
+```javascript
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 40 },
+        color: { value: "#58a6ff" }, // Change particle color here
+    },
+});
+```
+---
+
+### Technology Stack
+-   HTML5
+-   CSS3 (with CSS Variables)
+-   Vanilla JavaScript
+-   [particles.js](https://github.com/VincentGarreau/particles.js/)
+-   [Font Awesome](https://fontawesome.com/)
+```
