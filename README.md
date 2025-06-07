@@ -3,8 +3,6 @@
 
 A sleek, modern, and highly interactive startpage to replace the browser's new tab page.
 
-![MeBoard Screenshot](./screenshot.png)
-*(To create this screenshot, I just took a picture of my startpage and saved it as `screenshot.png` in this folder.)*
 
 ---
 
