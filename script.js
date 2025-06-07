@@ -4,8 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize particles.js
   particlesJS("particles-js", {
     particles: {
-      number: { value: 60, density: { enable: true, value_area: 800 } },
-      color: { value: "#3fb950" }, // Updated to match green accent
+      number: {
+        // Reduced particle count for better mobile performance
+        value: 40,
+        density: { enable: true, value_area: 800 },
+      },
+      color: { value: "#58a6ff" },
       shape: { type: "circle" },
       opacity: { value: 0.5, random: true },
       size: { value: 3, random: true },
@@ -28,23 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
     interactivity: {
       detect_on: "canvas",
       events: {
-        onhover: { enable: true, mode: "grab" },
-        onclick: { enable: true, mode: "push" },
+        // Disabled hover interactivity and enabled click/tap interactivity
+        onhover: { enable: false, mode: "grab" },
+        onclick: { enable: true, mode: "bubble" },
         resize: true,
       },
       modes: {
         grab: { distance: 140, line_linked: { opacity: 1 } },
+        // Configuration for the bubble effect on tap
+        bubble: { distance: 200, size: 8, duration: 2, opacity: 0.8, speed: 3 },
         push: { particles_nb: 4 },
       },
     },
     retina_detect: true,
-  });
-
-  // Cursor glow effect
-  const cursorGlow = document.getElementById("cursor-glow");
-  document.addEventListener("mousemove", (e) => {
-    cursorGlow.style.left = e.clientX + "px";
-    cursorGlow.style.top = e.clientY + "px";
   });
 
   // --- PAGE CONTENT SCRIPT ---
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentTimeElement = document.getElementById("current-time");
   const currentYearElement = document.getElementById("current-year");
 
-  // 1. Search Functionality - NEW, MORE ROBUST LOGIC
+  // 1. Search Functionality - Robust Logic
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const query = searchInput.value.trim();
@@ -63,23 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return; // Do nothing if the search is empty
     }
 
-    // Determine if the query is a URL or a search term.
-    // It's considered a URL if it contains a '.' (like example.com) and has no spaces,
-    // OR if it's exactly 'localhost'.
     const isUrl =
       (query.includes(".") && !query.includes(" ")) ||
       query.toLowerCase() === "localhost";
 
     if (isUrl) {
-      // If it's a URL, navigate to it.
-      // Add 'https://' if the protocol is missing.
       const destination =
         query.startsWith("http://") || query.startsWith("https://")
           ? query
           : `https://${query}`;
       window.location.href = destination;
     } else {
-      // Otherwise, perform a Google search.
       const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
       window.location.href = googleSearchUrl;
     }
@@ -109,7 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3. Update Current Year in Footer
   function updateYear() {
-    currentYearElement.textContent = new Date().getFullYear();
+    if (currentYearElement) {
+      // Check if the element exists before trying to update it
+      currentYearElement.textContent = new Date().getFullYear();
+    }
   }
 
   // Initial calls

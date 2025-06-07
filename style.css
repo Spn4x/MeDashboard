@@ -1,45 +1,35 @@
-/* --- NEW: Tell the browser the page is dark --- */
-html {
-    color-scheme: dark;
-}
-
-/* --- ROOT VARIABLES (Interactive Keyboard Theme) --- */
+/* --- ROOT VARIABLES (Minimalist "Floating Focus" Theme) --- */
 :root {
     --bg-color: #0d1117;
     --panel-color: #161b22;
     --border-color: #30363d;
     --text-primary: #c9d1d9;
     --text-secondary: #8b949e;
-    --accent-color: #3fb950; /* Changed to a vibrant GitHub Green */
-    --accent-glow: rgba(63, 185, 80, 0.3);
-
-    /* --- NEW: Variables for our 3D keys --- */
-    --key-bg-color: #21262d;
-    --key-shadow-color: #111317; /* A very dark shadow for the 3D effect */
-    --key-press-depth: 4px; /* How far the key 'presses down' */
-    --key-border-radius: 6px;
+    --accent-color: #58a6ff;
+    --accent-glow: rgba(88, 166, 255, 0.2);
+    --border-radius: 12px;
 }
 
-/* --- GLOBAL & BACKGROUND --- */
+/* --- GLOBAL & UTILITIES --- */
+html {
+    color-scheme: dark;
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: "Roboto", sans-serif;
     background-color: var(--bg-color);
     color: var(--text-primary);
-    line-height: 1.6;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    overflow: hidden;
+    overflow: hidden; /* For both desktop and mobile to prevent any scrolling */
 }
-
 #particles-js {
     position: fixed;
     width: 100%;
@@ -49,24 +39,22 @@ body {
     z-index: -1;
 }
 
-#cursor-glow {
+/* --- FLOATING GITHUB REPO LINK --- */
+#repo-link {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(
-        circle,
-        var(--accent-glow) 0%,
-        rgba(88, 166, 255, 0) 60%
-    );
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 0;
+    top: 25px;
+    right: 25px; /* Moved to top right */
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+}
+#repo-link:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
 }
 
-/* --- LAYOUT & PANELS --- */
+/* --- DESKTOP LAYOUT (Default) --- */
 .dashboard-grid {
     width: 100%;
     max-width: 900px;
@@ -75,81 +63,45 @@ body {
     gap: 24px;
     z-index: 1;
 }
-
 .content-panel {
     background-color: var(--panel-color);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     padding: 30px;
-    animation: fadeInUp 0.8s ease-out forwards;
-    opacity: 0;
 }
-
-.quick-links {
-    animation-delay: 0.2s;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- MAIN CONTENT & SEARCH KEY --- */
 .main-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
 }
-
-header {
-    margin-bottom: 40px;
-}
-
 header h1 {
     font-size: 3.5em;
     font-weight: 700;
     color: #fff;
 }
-
 .current-time {
     font-size: 1.5em;
     color: var(--text-secondary);
+    margin-top: 5px;
+    margin-bottom: 40px;
 }
-
-/* --- THE SEARCH BAR "KEY" --- */
 #search-form {
     display: flex;
     align-items: center;
-    background-color: var(--key-bg-color);
+    background-color: var(--bg-color);
     border: 1px solid var(--border-color);
-    border-radius: var(--key-border-radius);
+    border-radius: 8px;
     padding: 8px 15px;
-    transition: all 0.1s ease-out; /* Fast transition for a snappy feel */
-
-    /* The 3D effect: a solid shadow on the bottom to create a raised look */
-    box-shadow: 0 var(--key-press-depth) 0 var(--key-shadow-color);
+    transition: all 0.3s ease;
 }
-
 #search-form:focus-within {
-    /* "Press" the key down on focus */
-    transform: translateY(calc(var(--key-press-depth) / 2));
-    box-shadow: 0 calc(var(--key-press-depth) / 2) 0 var(--key-shadow-color);
     border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
 }
-
 #search-form i {
     color: var(--text-secondary);
-    font-size: 1.1em;
     margin-right: 12px;
 }
-
 #search-input {
     width: 100%;
     border: none;
@@ -159,71 +111,28 @@ header h1 {
     outline: none;
     padding: 8px 0;
 }
-
-/* --- KEYBOARD SECTION --- */
-.quick-links {
-    /* Style the panel to look like the base of a keyboard */
-    background: linear-gradient(145deg, #1a1f27, #13171d);
-    padding: 20px;
-}
-
 .links-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
-
-/* --- THE QUICK LINK "KEY" --- */
 .link-item {
-    background-color: var(--key-bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--key-border-radius);
     text-decoration: none;
     color: var(--text-primary);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px 10px;
-    gap: 10px;
-    transition: all 0.1s ease-out; /* Snappy transition */
-    cursor: pointer;
-
-    /* The core 3D effect */
-    box-shadow: 0 var(--key-press-depth) 0 var(--key-shadow-color);
+    padding: 15px;
+    gap: 15px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
 }
-
 .link-item:hover {
-    /* On hover, "press" the key down fully */
-    transform: translateY(var(--key-press-depth));
-    /* Remove the shadow to complete the pressed illusion */
-    box-shadow: 0 0 0 var(--key-shadow-color);
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
 }
-
-/* Active state for when the key is actually clicked */
-.link-item:active {
-    transform: translateY(var(--key-press-depth));
-    box-shadow: 0 0 0 var(--key-shadow-color);
-    /* Add a subtle inner glow to show it's activated */
-    background-color: #2a2f38;
-}
-
 .link-item i {
-    font-size: 1.8em; /* Slightly smaller to fit the key better */
+    font-size: 1.5em;
     color: var(--text-secondary);
-    transition: color 0.2s ease-in-out;
 }
-
-.link-item:hover i {
-    color: var(--accent-color);
-}
-
-.link-item span {
-    font-size: 0.9em;
-}
-
-/* --- FOOTER --- */
 footer {
     position: fixed;
     bottom: 15px;
@@ -234,113 +143,87 @@ footer {
     z-index: 1;
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
+/* =================================================================== */
+/* --- NEW "LIVING BACKGROUND" MOBILE VIEW (768px and smaller) --- */
+/* =================================================================== */
 @media (max-width: 768px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-    .main-content {
-        text-align: center;
-    }
-    .quick-links .links-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    header h1 {
-        font-size: 2.8em;
-    }
-}
-
-@media (max-width: 480px) {
     body {
-        padding: 10px;
+        /* This ensures the single content block is centered on screen */
+        padding: 25px;
     }
-    .content-panel {
-        padding: 20px;
-    }
-    .quick-links .links-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    header h1 {
-        font-size: 2.2em;
-    }
-}
 
-/* =================================================================== */
-/* --- MINIMAL MOBILE VIEW --- */
-/* These styles apply to screens 768px wide or smaller (tablets/phones) */
-/* =================================================================== */
-@media (max-width: 768px) {
-    /* 1. Performance & Cleanliness: Disable heavy animations */
-    #particles-js {
-        display: none; /* Turn off particles completely */
-    }
+    /* Hide desktop-only elements */
     footer {
-        display: none; /* Hide footer to save space */
+        display: none;
     }
 
-    /* 2. Layout: Merge panels into one seamless block */
+    #repo-link {
+        top: 25px;
+        right: 25px;
+    }
+
+    /* A single-column layout for the content block */
     .dashboard-grid {
-        grid-template-columns: 1fr; /* Stack into a single column */
-        gap: 0; /* Remove the gap between panels */
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 40px; /* Space between the main content and the app grid */
+        width: 100%;
     }
 
+    /* Remove the panel styling to make it feel like one cohesive unit */
+    .content-panel {
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    /* Top Section: Greeting & Search */
     .main-content {
         text-align: center;
-        border-bottom: 1px solid var(--border-color); /* Add a separator line */
-        /* Round the top corners, but not the bottom, to merge with the panel below */
-        border-radius: var(--key-border-radius) var(--key-border-radius) 0 0;
     }
-
-    .quick-links {
-        border-top: none; /* Remove the top border to merge seamlessly */
-        /* Round the bottom corners, but not the top */
-        border-radius: 0 0 var(--key-border-radius) var(--key-border-radius);
+    header h1 {
+        font-size: 2.5em;
     }
-
-    /* 3. Simplify Interactions: Ditch the 3D key effect for a flat UI */
-    #search-form,
-    .link-item {
-        box-shadow: none; /* Remove the 3D bottom shadow */
+    .current-time {
+        font-size: 1.2em;
+        margin-bottom: 30px;
     }
-
     #search-form {
-        background-color: var(--bg-color); /* Make it match the panel base */
+        padding: 12px 15px;
+    }
+    #search-input {
+        text-align: center;
+    }
+    #search-form i {
+        display: none;
     }
 
-    #search-form:focus-within {
-        transform: none; /* Disable the 'press down' motion */
-        box-shadow: 0 0 0 3px var(--accent-glow); /* Keep the focus glow */
-    }
-
-    .link-item:hover,
-    .link-item:active {
-        transform: none; /* Disable the 'press down' motion */
-        background-color: var(
-            --panel-color
-        ); /* Use a simple background highlight instead */
-    }
-
-    /* 4. Optimize Content Layout */
-    header h1 {
-        font-size: 2.8em;
-    }
-
+    /* Bottom Section: The App Grid */
     .links-grid {
-        /* Show 3 links per row for a more compact grid */
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
-}
 
-/* A second breakpoint for very small phones */
-@media (max-width: 480px) {
-    .content-panel {
-        padding: 20px;
+    .link-item {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 0;
+        background-color: var(--panel-color);
+        border-radius: var(--border-radius);
     }
-    header h1 {
-        font-size: 2.2em;
+    .link-item i {
+        font-size: 1.8em;
     }
-    /* On the smallest screens, 2 links per row is more comfortable */
-    .links-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .link-item span {
+        font-size: 0.8em;
+    }
+
+    /* Use :active for touch feedback instead of :hover */
+    .link-item:active {
+        transform: scale(0.95); /* Shrinks slightly when pressed */
+        background-color: rgba(255, 255, 255, 0.1);
     }
 }

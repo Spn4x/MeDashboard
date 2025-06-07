@@ -3,26 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>MeBoard - Your Personal Startpage</title>
 
-        <!-- Google Fonts -->
+        <!-- Fonts & Icons -->
         <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
             rel="stylesheet"
         />
-        <!-- Font Awesome for Icons -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <!-- Link to your CSS file -->
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <!-- The dynamic particle background will be rendered here -->
         <div id="particles-js"></div>
-        <!-- The cursor follower element -->
-        <div id="cursor-glow"></div>
+
+        <!-- Floating GitHub Repository Link -->
+        <a
+            href="https://github.com/Spn4x/MeDashboard"
+            target="_blank"
+            id="repo-link"
+        >
+            <i class="fa-brands fa-github"></i>
+        </a>
 
         <div class="dashboard-grid">
             <!-- Main Content: Greeting, Time, Search -->
@@ -31,7 +37,6 @@
                     <h1 id="greeting">Good Morning</h1>
                     <p id="current-time" class="current-time">12:00 PM</p>
                 </header>
-
                 <main>
                     <section class="search-section">
                         <form id="search-form" role="search">
@@ -101,13 +106,13 @@
                 </div>
             </div>
         </div>
+
         <footer>
             <p>© <span id="current-year">2024</span> MeBoard</p>
         </footer>
 
-        <!-- CDN for particles.js -->
+        <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-        <!-- Link to your JS file -->
         <script src="script.js"></script>
     </body>
 </html>
