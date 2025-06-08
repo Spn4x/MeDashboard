@@ -3,12 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>MeBoard - Your Personal Startpage</title>
-
-        <!-- Fonts & Icons -->
+        <!-- NEW FONT: Poppins -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
             rel="stylesheet"
         />
         <link
@@ -18,100 +16,226 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!-- The dynamic particle background will be rendered here -->
         <div id="particles-js"></div>
-
-        <!-- Floating GitHub Repository Link -->
-        <a
-            href="https://github.com/Spn4x/MeDashboard"
-            target="_blank"
-            id="repo-link"
-        >
-            <i class="fa-brands fa-github"></i>
-        </a>
-
+        <header class="top-bar">
+            <span id="meal-indicator"></span>
+            <a
+                href="https://github.com/Spn4x/MeDashboard"
+                target="_blank"
+                id="repo-link"
+                class="top-bar-btn"
+                title="GitHub Repo"
+            >
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </header>
+        <button id="drawer-trigger-desktop" class="floating-trigger">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>App Drawer</span>
+        </button>
+        <button id="changelog-trigger-desktop" class="floating-trigger">
+            <i class="fa-solid fa-scroll"></i>
+            <span>Changelogs</span>
+        </button>
+        <div id="curtain-menu" class="curtain-menu">
+            <div class="curtain-header">
+                <h2>Quick Links</h2>
+                <button
+                    id="curtain-close-btn"
+                    class="top-bar-btn"
+                    title="Close"
+                >
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="curtain-links-grid">
+                <a
+                    href="https://www.github.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-github"></i><span>GitHub</span></a
+                >
+                <a
+                    href="https://www.youtube.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-youtube"></i><span>YouTube</span></a
+                >
+                <a
+                    href="https://music.youtube.com/"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-music"></i><span>YT Music</span></a
+                >
+                <a
+                    href="https://aistudio.google.com/"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-brain"></i><span>AI Studio</span></a
+                >
+                <a
+                    href="https://www.reddit.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-reddit-alien"></i
+                    ><span>Reddit</span></a
+                >
+                <a
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-facebook"></i
+                    ><span>Facebook</span></a
+                >
+                <a
+                    href="https://mail.google.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-envelope"></i><span>Gmail</span></a
+                >
+                <a
+                    href="https://calendar.google.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-calendar-days"></i
+                    ><span>Calendar</span></a
+                >
+                <a
+                    href="https://drive.google.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-google-drive"></i
+                    ><span>Drive</span></a
+                >
+            </div>
+        </div>
+        <div id="changelog-curtain" class="curtain-menu">
+            <div class="curtain-header">
+                <h2>Changelogs</h2>
+                <button
+                    id="changelog-close-btn"
+                    class="top-bar-btn"
+                    title="Close"
+                >
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <ul class="changelog-list">
+                <li>
+                    <h3>Version 3.0 - The Definitive Experience</h3>
+                    <span class="changelog-date">June 8, 2025</span>
+                    <p>
+                        - Added Changelogs! Polished all animations and created
+                        distinct, premium desktop and mobile experiences.
+                    </p>
+                </li>
+                <li>
+                    <h3>Version 2.0 - The Interactive Leap</h3>
+                    <span class="changelog-date">June 8, 2025</span>
+                    <p>
+                        - Introduced desktop Node Grid and mobile gestural UI.
+                        Added Meal-Time Indicator.
+                    </p>
+                </li>
+                <li>
+                    <h3>Version 1.0 - The Foundation</h3>
+                    <span class="changelog-date">June 7, 2025</span>
+                    <p>
+                        - Initial creation with particle background, dynamic
+                        time, and search functionality.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div id="app-drawer">
+            <div class="drawer-handle-bar"></div>
+            <div class="drawer-links-grid">
+                <a
+                    href="https://www.github.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-github"></i><span>GitHub</span></a
+                >
+                <a
+                    href="https://www.youtube.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-youtube"></i><span>YouTube</span></a
+                >
+                <a
+                    href="https://music.youtube.com/"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-music"></i><span>YT Music</span></a
+                >
+                <a
+                    href="https://aistudio.google.com/"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-brain"></i><span>AI Studio</span></a
+                >
+                <a
+                    href="https://www.reddit.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-reddit-alien"></i
+                    ><span>Reddit</span></a
+                >
+                <a
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-facebook"></i
+                    ><span>Facebook</span></a
+                >
+                <a
+                    href="https://mail.google.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-envelope"></i><span>Gmail</span></a
+                >
+                <a
+                    href="https://calendar.google.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-solid fa-calendar-days"></i
+                    ><span>Calendar</span></a
+                >
+                <a
+                    href="https://drive.google.com"
+                    target="_blank"
+                    class="link-item"
+                    ><i class="fa-brands fa-google-drive"></i
+                    ><span>Drive</span></a
+                >
+            </div>
+        </div>
+        <div id="overlay"></div>
         <div class="dashboard-grid">
-            <!-- Main Content: Greeting, Time, Search -->
-            <div class="main-content content-panel">
-                <header>
-                    <h1 id="greeting">Good Morning</h1>
-                    <p id="current-time" class="current-time">12:00 PM</p>
+            <div class="main-content">
+                <!-- SIMPLIFIED HEADER STRUCTURE -->
+                <header class="main-header">
+                    <h1 id="greeting"></h1>
+                    <!-- Text will be added by JS -->
+                    <p id="current-time" class="time-date-info"></p>
+                    <p id="current-date" class="time-date-info"></p>
                 </header>
                 <main>
                     <section class="search-section">
                         <form id="search-form" role="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
                             <input
                                 type="search"
                                 id="search-input"
                                 placeholder="Search or type a URL..."
-                                autofocus
                             />
                         </form>
                     </section>
+                    <button id="changelog-trigger-mobile">
+                        View Changelogs
+                    </button>
                 </main>
             </div>
-
-            <!-- Quick Links -->
-            <div class="quick-links content-panel">
-                <div class="links-grid">
-                    <a
-                        href="https://www.github.com"
-                        target="_blank"
-                        class="link-item"
-                    >
-                        <i class="fa-brands fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a
-                        href="https://www.youtube.com"
-                        target="_blank"
-                        class="link-item"
-                    >
-                        <i class="fa-brands fa-youtube"></i>
-                        <span>YouTube</span>
-                    </a>
-                    <a
-                        href="https://www.reddit.com"
-                        target="_blank"
-                        class="link-item"
-                    >
-                        <i class="fa-brands fa-reddit-alien"></i>
-                        <span>Reddit</span>
-                    </a>
-                    <a
-                        href="https://mail.google.com"
-                        target="_blank"
-                        class="link-item"
-                    >
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>Gmail</span>
-                    </a>
-                    <a
-                        href="https://calendar.google.com"
-                        target="_blank"
-                        class="link-item"
-                    >
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <span>Calendar</span>
-                    </a>
-                    <a
-                        href="https://drive.google.com"
-                        target="_blank"
-                        class="link-item"
-                    >
-                        <i class="fa-brands fa-google-drive"></i>
-                        <span>Drive</span>
-                    </a>
-                </div>
-            </div>
         </div>
-
-        <footer>
-            <p>© <span id="current-year">2024</span> MeBoard</p>
-        </footer>
-
-        <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
         <script src="script.js"></script>
     </body>
